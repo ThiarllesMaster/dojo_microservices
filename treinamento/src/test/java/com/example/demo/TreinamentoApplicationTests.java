@@ -36,7 +36,7 @@ public class TreinamentoApplicationTests {
 	    JSONObject jsonObject = new JSONObject();
 	    jsonObject.put("id", 1L);
 	    jsonObject.put("nomeAssociado", "Thiarlles Duarte Gomes");
-	    jsonObject.put("cpfAssociado", "00840995008");
+	    jsonObject.put("cpfAssociado", "");
 	    
 	    HttpEntity<String> httpEntity = new HttpEntity <String> (jsonObject.toString(), httpHeaders);
 
