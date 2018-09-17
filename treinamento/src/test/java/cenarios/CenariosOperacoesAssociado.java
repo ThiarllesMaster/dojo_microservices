@@ -1,15 +1,24 @@
 package cenarios;
 
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 import org.jbehave.core.annotations.Given;
 import org.jbehave.core.annotations.Then;
 import org.jbehave.core.annotations.When;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.junit.Assert;
+import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.client.RestTemplate;
+
+import model.AssociadoJson;
 
 /**
  * Class developed to test the scenario described at User Story 
@@ -51,6 +60,26 @@ public class CenariosOperacoesAssociado {
 	    response = restTemplate.postForObject(URL_SERVICE, httpEntity, HttpStatus.class);  
 	    Assert.assertTrue(response.value() == codigo);
 	}
+   
+  @Then("O associado deverá ter o CPF $cpf cadastrado")
+   public void testarCPFCadastrado(String cpf) {
+	   final String URL = "http://localhost:9080/associados/{id}";
+	   Map<String, Long>parameters = new HashMap<>();
+	   parameters.put("id", new Long(1));
+	   restTemplate = new RestTemplate();
+	   model.AssociadoJson associado = restTemplate.getForObject(URL, model.AssociadoJson.class, parameters);
+	   Assert.assertTrue(associado.getCpfAssociado().equals(cpf));	   
+   }
+   
+   @Then("Na base de dados deverá haver $quantidade_registros elemento")
+   public void verificarTamanhoLista(Integer quantidade_registros) {
+	   restTemplate = new RestTemplate();
+	   ResponseEntity<List<AssociadoJson>>listaAssociados = restTemplate.exchange(URL_SERVICE,
+			   HttpMethod.GET, null, new ParameterizedTypeReference<List<AssociadoJson>>() {
+			});
+	   Assert.assertTrue(listaAssociados.getBody().size() == quantidade_registros);
+	   
+   }
 	
 
 }
