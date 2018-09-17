@@ -5,6 +5,7 @@ import org.jbehave.core.annotations.Then;
 import org.jbehave.core.annotations.When;
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.junit.Assert;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -18,7 +19,6 @@ import org.springframework.web.client.RestTemplate;
 public class CenariosOperacoesAssociado {
  
 	static final String URL_SERVICE = "http://localhost:9080/associados";
-	final Integer CODE_SUCESS_POST = 201;
 	HttpEntity<String>httpEntity;
 	JSONObject jsonObject;
 	HttpHeaders httpHeaders;
@@ -39,16 +39,9 @@ public class CenariosOperacoesAssociado {
 	
 	@When("Quando resolver cadastrar um associado")
 	public void registrarAssociado() {
-		try {
 			restTemplate = new RestTemplate();
-			System.out.println(restTemplate);
-			System.out.println("Thiarlles");
 			httpEntity = new HttpEntity <String> (jsonObject.toString(), httpHeaders);
 			restTemplate.postForObject(URL_SERVICE, httpEntity, HttpStatus.class);  		   
-			System.out.println(jsonObject);
-		} catch (Exception e) {
-			System.err.println(e);
-		}
 	   
 	}
 	
@@ -56,8 +49,7 @@ public class CenariosOperacoesAssociado {
    @Then("Se o cadastro ocorreu com sucesso a resposta deverá possui código $codigo")
 	public void respostaDefinir(Integer codigo) {
 	    response = restTemplate.postForObject(URL_SERVICE, httpEntity, HttpStatus.class);  
-		
-	   System.out.println(response.value());
+	    Assert.assertTrue(response.value() == codigo);
 	}
 	
 
