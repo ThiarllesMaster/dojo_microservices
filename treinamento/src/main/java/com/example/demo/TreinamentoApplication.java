@@ -25,7 +25,7 @@ public class TreinamentoApplication {
 	public CommandLineRunner treinamento(AssociadoRepository associadoRepository) {
 		return(args)-> {
 			Associado associado = new Associado();
-			associado.setCpfAssociado("00840995008");
+			associado.setCpfAssociado("-----");
 			associado.setNomeAssociado("Thiarlles Duarte Gomes");
 			associadoRepository.save(associado);
 		};
