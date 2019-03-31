@@ -9,6 +9,10 @@
 .settings
 .springBeans
 .sts4-cache
+*.class
+*.zip
+*.cmd
+*.mvnw
 
 ### IntelliJ IDEA ###
 .idea
@@ -23,3 +27,4 @@
 /dist/
 /nbdist/
 /.nb-gradle/
+/bin/
