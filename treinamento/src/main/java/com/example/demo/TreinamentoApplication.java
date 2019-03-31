@@ -34,8 +34,11 @@ public class TreinamentoApplication {
 			associado.setNomeAssociado("Thiarlles Duarte Gomes");
 			associadoRepository.save(associado);
 			Associado optionalAssociado = associadoRepository.findById(associado.getId()).orElse(null);
+			Integer numberRecords = associadoRepository.countByNomeAssociado(associado.getNomeAssociado());
 			log.info("The associado's name {}", optionalAssociado.getNomeAssociado());
 			log.info("The associado's cpf {}", optionalAssociado.getCpfAssociado());
+			log.info("The count {}", numberRecords);
+
 		};
 	}
 }
