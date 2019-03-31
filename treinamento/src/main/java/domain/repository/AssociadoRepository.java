@@ -5,9 +5,12 @@
 package domain.repository;
 
 import org.springframework.data.repository.CrudRepository;
+import org.springframework.stereotype.Repository;
 
 import domain.model.Associado;
 
+@Repository
 public interface AssociadoRepository extends CrudRepository<Associado, Long>{
+	
 
 }
