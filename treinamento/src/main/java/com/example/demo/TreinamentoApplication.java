@@ -1,5 +1,7 @@
 package com.example.demo;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -16,6 +18,8 @@ import domain.repository.AssociadoRepository;
 @ComponentScan("domain.rest")
 @EnableJpaRepositories("domain.repository")
 public class TreinamentoApplication {
+	
+	private static final Logger log = LoggerFactory.getLogger(TreinamentoApplication.class);
 
 	public static void main(String[] args) {
 		SpringApplication.run(TreinamentoApplication.class, args);
@@ -24,6 +28,7 @@ public class TreinamentoApplication {
 	@Bean
 	public CommandLineRunner treinamento(AssociadoRepository associadoRepository) {
 		return(args)-> {
+			log.info("Saving the associado");
 			Associado associado = new Associado();
 			associado.setCpfAssociado("-----");
 			associado.setNomeAssociado("Thiarlles Duarte Gomes");
