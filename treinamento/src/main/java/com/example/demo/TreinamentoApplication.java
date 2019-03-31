@@ -30,9 +30,12 @@ public class TreinamentoApplication {
 		return(args)-> {
 			log.info("Saving the associado");
 			Associado associado = new Associado();
-			associado.setCpfAssociado("-----");
+			associado.setCpfAssociado("680.338.110-21");
 			associado.setNomeAssociado("Thiarlles Duarte Gomes");
 			associadoRepository.save(associado);
+			Associado optionalAssociado = associadoRepository.findById(associado.getId()).orElse(null);
+			log.info("The associado's name {}", optionalAssociado.getNomeAssociado());
+			log.info("The associado's cpf {}", optionalAssociado.getCpfAssociado());
 		};
 	}
 }
