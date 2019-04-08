@@ -13,7 +13,6 @@ import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
-import org.springframework.transaction.annotation.Transactional;
 
 import domain.model.Associado;
 import domain.repository.AssociadoRepository;
@@ -25,6 +24,8 @@ import domain.repository.AssociadoRepository;
 public class TreinamentoApplication {
 
 	private static final Logger log = LoggerFactory.getLogger(TreinamentoApplication.class);
+	
+	
 
 	public static void main(String[] args) {
 		SpringApplication.run(TreinamentoApplication.class, args);
@@ -54,7 +55,8 @@ public class TreinamentoApplication {
 			log.info("The size of list only 1 {}", associados.size());
 
 			findIds(associadoRepository);
-
+			
+			
 		};
 	}
 

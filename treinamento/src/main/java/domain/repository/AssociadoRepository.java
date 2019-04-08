@@ -5,13 +5,10 @@
 package domain.repository;
 
 import java.util.List;
-import java.util.stream.Stream;
 
-import javax.transaction.Transactional;
-
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.repository.CrudRepository;
-import org.springframework.lang.NonNull;
-import org.springframework.stereotype.Repository;
 
 import domain.model.Associado;
 
@@ -23,9 +20,10 @@ public interface AssociadoRepository extends CrudRepository<Associado, Long>{
 	
 	List<Associado>queryFirst1ByNomeAssociado(String nome);
 	
-	List<Associado>findByIdGreaterThan(Integer id);
+	List<Associado>findByIdGreaterThan(Integer id);	
 	
-	@org.springframework.transaction.annotation.Transactional(readOnly = true)
 	List<Associado>findBynomeAssociado(String name);
+	
+	
 
 }
