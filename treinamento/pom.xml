@@ -23,7 +23,7 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		<java.version>1.8</java.version>
-		  <jbehave.version>4.0.5</jbehave.version>
+		<jbehave.version>4.0.5</jbehave.version>
 	</properties>
 
 	<dependencies>
@@ -46,6 +46,13 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
+		<!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-devtools -->
+		<!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-devtools -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-devtools</artifactId>		
+		</dependency>
+
 
 		<!-- Dependencies to JBehave -->
 		<dependency>
@@ -60,6 +67,15 @@
 			<artifactId>jbehave-junit-runner</artifactId>
 			<version>1.2.0</version>
 		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/org.mockito/mockito-all -->
+		<dependency>
+			<groupId>org.mockito</groupId>
+			<artifactId>mockito-all</artifactId>
+			<version>1.8.4</version>
+			<scope>test</scope>
+		</dependency>
+
 
 	</dependencies>
 
